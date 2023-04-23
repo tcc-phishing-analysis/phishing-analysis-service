@@ -1,0 +1,76 @@
+openapi: 3.0.0
+info:
+  title: Swagger Análise Phishing
+  description: |-
+    Essa é uma amostra de um swagger desenvolvido para ser utilizado no projeto de análise de phishing.
+  version: 1.0.0
+servers:
+  - url: https://exemplophishing.swagger.io/api
+tags:
+  - name: phishing
+    description: Tudo para análise de phishing
+    externalDocs:
+      description: Find out more
+      url: http://swagger.io
+paths:
+  /phishing:
+    post:
+      tags:
+        - phishing
+      summary: Análise da probabilidade de um conteúdo em relação a phishing
+      description: Análise da probabilidade de um conteúdo em relação a phishing
+      operationId: analisePhishing
+      requestBody:
+        description: Body necessário para análise
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PhishingRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PhishingResponse'
+        '400':
+          description: Invalid Field
+        '404':
+          description: Pet not found
+        '405':
+          description: Validation exception
+components:
+  schemas:
+    PhishingType:
+      type: string
+      example: EMAIL
+      enum:
+        - EMAIL
+        - URL
+    PhishingRequest:
+      type: object
+      properties:
+        type:
+          type: string
+          example: EMAIL
+          enum:
+            - EMAIL
+            - URL
+        content:
+          type: object
+      required:
+        - type
+        - content
+    PhishingResponse:
+      type: object
+      properties:
+        phishing_score:
+          type: number
+          format: float
+          example: 95.0
+        reasons:
+          type: array
+          items:
+            type: string
+            example: Muitos problemas de phishing
