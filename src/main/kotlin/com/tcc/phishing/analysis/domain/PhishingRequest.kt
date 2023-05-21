@@ -4,5 +4,5 @@ import com.tcc.phishing.analysis.domain.enums.PhishingType
 
 data class PhishingRequest(
     val type: PhishingType,
-    val content: Any
+    val content: PhishingAnalysisContent
 )
