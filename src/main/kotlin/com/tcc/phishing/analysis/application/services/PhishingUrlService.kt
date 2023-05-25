@@ -8,6 +8,6 @@ import com.tcc.phishing.analysis.domain.enums.PhishingType
 class PhishingUrlService : PhishingInterface{
 
     override fun getPhishingScore(phishingRequest: PhishingRequest): PhishingResponse {
-        TODO("Not yet implemented")
+        TODO()
     }
 }
