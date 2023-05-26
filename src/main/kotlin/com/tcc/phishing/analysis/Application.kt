@@ -7,5 +7,7 @@ import org.springframework.boot.runApplication
 class Application
 
 fun main(args: Array<String>) {
+	val jdbcUrl = "jdbc:postgresql://localhost:5432/example"
+
 	runApplication<Application>(*args)
 }

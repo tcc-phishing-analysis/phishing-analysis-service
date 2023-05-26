@@ -1,6 +1,6 @@
 package com.tcc.phishing.analysis.application.controller
 
-import com.tcc.phishing.analysis.application.interfaces.PhishingInterface
+import com.tcc.phishing.analysis.application.interfaces.PhishingStrategy
 import com.tcc.phishing.analysis.application.resources.S3Resources
 import com.tcc.phishing.analysis.application.web.api.PhishingApi
 import com.tcc.phishing.analysis.application.web.dto.PhishingRequestDto
@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 class PhishingController(
-        private val phishingInterface: PhishingInterface,
+        private val phishingStrategy: PhishingStrategy,
         private val s3Resources: S3Resources
 ) : PhishingApi {
 
     override fun analisePhishing(phishingRequestDto: PhishingRequestDto): ResponseEntity<PhishingResponseDto> {
-        val response = phishingInterface.getPhishingScore(phishingRequestDto.toDomain())
+        val response = phishingStrategy.getPhishingScore(phishingRequestDto.toDomain())
 
         return ResponseEntity
                 .ok()

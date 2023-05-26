@@ -16,7 +16,8 @@ class S3Resources(
 
      private val bucketName = bucketProperties.bucketName
      private val fileName = bucketProperties.fileName
-     fun readFile():Dataset<Row> {
+
+     fun readFile(): Dataset<Row> {
 
           // Configurar a sessão Spark
           val spark = SparkSession.builder()

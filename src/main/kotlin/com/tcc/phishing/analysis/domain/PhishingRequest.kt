@@ -5,5 +5,5 @@ import javax.validation.constraints.NotNull
 
 data class PhishingRequest(
         val type: PhishingType,
-        val content: @NotNull Any
+        val content: Any
 )

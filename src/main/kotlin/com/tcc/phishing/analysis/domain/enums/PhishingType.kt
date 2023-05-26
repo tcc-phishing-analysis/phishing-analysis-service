@@ -3,7 +3,7 @@ package com.tcc.phishing.analysis.domain.enums
 import org.webjars.NotFoundException
 
 enum class PhishingType {
-    EMAIL, URL;
+    URL;
 
     companion object {
         fun getValue(value: String) = values().find { it.name == value }

@@ -53,12 +53,17 @@ components:
       properties:
         type:
           type: string
-          example: EMAIL
+          example: URL
           enum:
             - EMAIL
             - URL
         content:
           type: object
+          example: {
+            "url": "www.clona-cartao.com.br",
+            "google_index": 123456789,
+            "has_certificate": false
+          }
       required:
         - type
         - content
@@ -68,9 +73,4 @@ components:
         phishing_score:
           type: number
           format: float
-          example: 95.0
-        reasons:
-          type: array
-          items:
-            type: string
-            example: Muitos problemas de phishing
+          example: 95.03
