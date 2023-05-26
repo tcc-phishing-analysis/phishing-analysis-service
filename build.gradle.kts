@@ -7,9 +7,10 @@ plugins {
 	id("org.springframework.boot") version "2.7.10"
 	id("io.spring.dependency-management") version "1.0.15.RELEASE"
 	id("org.openapi.generator") version "5.3.0"
-	kotlin("jvm") version "1.6.21"
-	kotlin("plugin.spring") version "1.6.21"
-	kotlin("plugin.jpa") version "1.6.21"
+	kotlin("jvm") version "1.8.0"
+
+	kotlin("plugin.spring") version "1.8.0"
+	kotlin("plugin.jpa") version "1.8.0"
 }
 
 group = "com.tcc"
@@ -47,6 +48,7 @@ tasks.withType<KotlinCompile> {
 	kotlinOptions {
 		freeCompilerArgs = listOf("-Xjsr305=strict")
 		jvmTarget = "1.8"
+		languageVersion = "1.8"
 	}
 }
 
@@ -76,4 +78,11 @@ openApiGenerate {
 			)
 	)
 }
-sourceSets { getByName("main") { java { srcDir("$buildDir/generated/openapi/src/main/java") } } }
+
+sourceSets {
+	getByName("main") {
+		java {
+			srcDir("$buildDir/generated/openapi/src/main/java")
+		}
+	}
+}
