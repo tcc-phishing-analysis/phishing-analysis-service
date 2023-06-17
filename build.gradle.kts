@@ -22,7 +22,6 @@ repositories {
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-validation")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-jetty")
@@ -35,13 +34,30 @@ dependencies {
 	implementation("org.apache.spark:spark-sql_2.12:3.2.0")
 	compileOnly("io.swagger:swagger-annotations:1.6.6")
 	implementation("org.postgresql:postgresql:42.3.1")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+	// database
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	runtimeOnly("com.h2database:h2")
+
+	// ML - SingularValueDecomposition
+	implementation("org.apache.commons:commons-math3:3.6.1")
 
 	// test
+	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	implementation("junit:junit:4.13.2")
 	testImplementation("org.junit.jupiter:junit-jupiter")
 	testImplementation("org.junit.jupiter:junit-jupiter-params")
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
+}
+
+configurations {
+	runtimeOnly {
+		exclude(group = "org.slf4j", module = "slf4j-log4j12")
+	}
+
+	compileOnly {
+		exclude(group = "org.slf4j", module = "slf4j-log4j12")
+	}
 }
 
 tasks.withType<KotlinCompile> {

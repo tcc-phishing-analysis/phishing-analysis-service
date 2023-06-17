@@ -7,7 +7,9 @@ import com.tcc.phishing.analysis.application.resources.persistence.tables.Analys
 import com.tcc.phishing.analysis.application.resources.persistence.tables.PhishingClassificationTable
 import com.tcc.phishing.analysis.domain.PhishingRequest
 import com.tcc.phishing.analysis.domain.PhishingResponse
+import org.springframework.stereotype.Service
 
+@Service
 class PhishingUrlService (
         private val analysisContentRepository: AnalysisContentRepository,
         private val phishingClassificationRepository: PhishingClassificationRepository,
@@ -16,11 +18,11 @@ class PhishingUrlService (
     override fun getPhishingScore(phishingRequest: PhishingRequest): PhishingResponse {
         val analysisContent = analysisContentRepository.save(AnalysisContentTable(phishingRequest))
 
-        return PhishingResponse(0.1.toFloat(), listOf()).also {
+        return PhishingResponse(0.1.toFloat()).also {
             phishingClassificationRepository.save(
                     PhishingClassificationTable(
                             phishingResponse = it,
-                            analysisId = analysisContent.id
+                            analysisContent = analysisContent
                     )
             )
         }
