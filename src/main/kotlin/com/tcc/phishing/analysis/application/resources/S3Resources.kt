@@ -19,13 +19,11 @@ class S3Resources(
 
      fun readFile(): Dataset<Row> {
 
-          // Configurar a sessão Spark
           val spark = SparkSession.builder()
                   .appName("S3 to DataFrame Example")
                   .master("local")
                   .getOrCreate();
 
-          // Ler o arquivo CSV do Amazon S3
           var df: Dataset<Row> = spark.read()
                   .option("header", "true")
                   .csv("s3a://" + bucketName + "/" + fileName);
