@@ -33,7 +33,7 @@ dependencies {
 	implementation("org.apache.spark:spark-core_2.12:3.2.0")
 	implementation("org.apache.spark:spark-sql_2.12:3.2.0")
 	compileOnly("io.swagger:swagger-annotations:1.6.6")
-	implementation("org.postgresql:postgresql:42.3.1")
+	 //implementation("org.postgresql:postgresql:42.3.1")
 
 	// database
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")

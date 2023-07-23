@@ -12,16 +12,10 @@ import kotlin.random.Random
 data class AnalysisContentTable(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @OneToOne
-        val id: Int = Random.nextInt(),
+        val id: Int = 0,
         val type: PhishingType,
-        val content: Map<String, Any>,
+        // TODO: validar como incluir esse campo no BD
+        // val content: Map<String, Any>,
         val createdAt: LocalDateTime = LocalDateTime.now(),
         val updatedAt: LocalDateTime = LocalDateTime.now()
-) {
-
-        constructor(phishingRequest: PhishingRequest) : this (
-                type = phishingRequest.type,
-                content = phishingRequest.content as Map<String, Any>
-        )
-}
+)
