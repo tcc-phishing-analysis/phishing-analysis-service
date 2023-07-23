@@ -16,15 +16,18 @@ class PhishingUrlService (
 ): PhishingStrategy {
 
     override fun getPhishingScore(phishingRequest: PhishingRequest): PhishingResponse {
-        val analysisContent = analysisContentRepository.save(AnalysisContentTable(phishingRequest))
+        //val analysisContent = analysisContentRepository.save(AnalysisContentTable(phishingRequest))
 
         return PhishingResponse(0.1.toFloat()).also {
+            /*
             phishingClassificationRepository.save(
                     PhishingClassificationTable(
                             phishingResponse = it,
                             analysisContent = analysisContent
                     )
             )
+
+             */
         }
     }
 
