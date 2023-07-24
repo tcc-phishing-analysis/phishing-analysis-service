@@ -27,7 +27,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-jetty")
 	implementation("org.springframework.boot:spring-boot-configuration-processor")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
-	implementation("org.springdoc:springdoc-openapi-ui:1.5.9")
+	implementation("org.springdoc:springdoc-openapi-ui:1.6.9")
 	implementation("aws.sdk.kotlin:aws-core-jvm:0.25.0-beta")
 	implementation("aws.sdk.kotlin:s3:0.25.0-beta")
 	implementation("org.apache.spark:spark-core_2.12:3.2.0")

@@ -1,21 +1,15 @@
 package com.tcc.phishing.analysis.application.resources
 
-import S3PCAAnalysisProperties
-import aws.sdk.kotlin.services.s3.S3Client
-import aws.sdk.kotlin.services.s3.model.*
-import aws.smithy.kotlin.runtime.content.writeToFile
-import java.io.File
-import org.apache.spark.sql.Dataset;
-import org.apache.spark.sql.Row;
-import org.apache.spark.sql.SparkSession;
-import org.apache.spark.sql.functions;
+import com.tcc.phishing.analysis.application.config.S3PCAAnalysisProperties
+import org.apache.spark.sql.Dataset
+import org.apache.spark.sql.Row
+import org.apache.spark.sql.SparkSession
+import org.springframework.stereotype.Service
 
+@Service
 class S3Resources(
         private val bucketProperties: S3PCAAnalysisProperties
 ) {
-
-     private val bucketName = bucketProperties.bucketName
-     private val fileName = bucketProperties.fileName
 
      fun readFile(): Dataset<Row> {
 
@@ -26,7 +20,7 @@ class S3Resources(
 
           var df: Dataset<Row> = spark.read()
                   .option("header", "true")
-                  .csv("s3a://" + bucketName + "/" + fileName);
+                  .csv("s3a://" + bucketProperties.bucketName + "/" + bucketProperties.fileName)
 
           df.show()
 
