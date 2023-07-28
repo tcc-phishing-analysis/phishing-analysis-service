@@ -13,19 +13,28 @@ class S3Resources(
 
      fun readFile(): Dataset<Row> {
 
-          val spark = SparkSession.builder()
-                  .appName("S3 to DataFrame Example")
-                  .master("local")
-                  .getOrCreate();
+          try {
+               val spark = SparkSession.builder()
+                       .appName("S3 to DataFrame Example")
+                       .master("local")
+                       .getOrCreate();
 
           var df: Dataset<Row> = spark.read()
                   .option("header", "true")
                   .csv("s3a://" + bucketProperties.bucketName + "/" + bucketProperties.fileName)
 
-          df.show()
+               df.show()
 
-          spark.stop()
+               spark.stop()
 
-          return df
+               return df
+          } catch (ex: RuntimeException) {
+               // TODO: Arrumar tratamento de exceptions
+               throw GenericException(message = " deu ruim")
+          } catch (ex: NotFoundException) {
+               throw GenericException(message = "Arquivo não encontrado")
+          } catch (ex: Exception) {
+               throw GenericException(message = ex.message)
+          }
      }
 }
