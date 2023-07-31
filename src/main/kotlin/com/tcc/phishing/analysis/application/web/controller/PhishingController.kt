@@ -1,4 +1,4 @@
-package com.tcc.phishing.analysis.application.controller
+package com.tcc.phishing.analysis.application.web.controller
 
 import com.tcc.phishing.analysis.application.interfaces.PhishingStrategy
 import com.tcc.phishing.analysis.application.resources.S3Resources

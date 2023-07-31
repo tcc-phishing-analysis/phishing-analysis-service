@@ -35,6 +35,9 @@ dependencies {
 	compileOnly("io.swagger:swagger-annotations:1.6.6")
 	 //implementation("org.postgresql:postgresql:42.3.1")
 
+	implementation("org.springframework.data:spring-data-hadoop:2.5.0.RELEASE")
+
+
 	// database
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	runtimeOnly("com.h2database:h2")
